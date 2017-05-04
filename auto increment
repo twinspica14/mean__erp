@@ -1,0 +1,33 @@
+var mongoose = require('mongoose');
+var AutoIncrement = require('mongoose-sequence');
+var Schema = mongoose.Schema;
+var item = new Schema({
+	name:{type: String},
+    price:{type:Number,
+    	required: true},
+    qty:{type:Number,
+    	required: true}
+
+});
+
+
+
+var InvoiceSchema =new Schema({
+ au:{type: Number},
+ name:{type: String, 
+ required: true},
+ price: {type:Number},
+ xxx: {type:Number},
+ payment:{type: Number},
+ check:{type: String},
+ items: [item]
+});
+
+    //recno:{type: Number}
+
+//ClientSchema.plugin(AutoIncrement);
+
+//item.plugin(AutoIncrement, {inc_field: 'idd'});
+InvoiceSchema.plugin(AutoIncrement, {inc_field: 'au'});
+
+module.exports = mongoose.model("Invoice", InvoiceSchema);
