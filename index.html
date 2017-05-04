@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- Latest compiled and minified CSS -->
+ <base href="/">
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Animate.css -->
+ 
+  <!-- Bootstrap  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css">
+
+  <!-- Theme style  -->
+  <link rel="stylesheet" href="app/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assests/angular-material/angular-material.min.css">
+
+  <!-- Modernizr JS 
+
+
+<script src="assests/js/jquery-3.1.1.min.js"></script> -->
+<link rel="stylesheet" type="text/css" href="assests/css/style.css">
+<link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+
+
+	
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+	<script src="assests/node_modules/angular-animate/angular-animate.js"></script>
+	<script src="assests/node_modules/angular-aria/angular-aria.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.4/lodash.min.js"></script>
+	<script src="assests/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+
+	
+</head>
+<body ng-app="StarterApp">
+<div>
+<div>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand active" href="#"><i>Pen your Story</i></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="/home">Home</a></li>
+            
+            <li><a  href="/about">Entery</a></li>
+            <li><a  href="/profile">Clients</a></li>
+            <li><a  href="/content">Invoices</a></li>
+          
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+</div>
+    
+<div style="padding-top: 110px">
+
+
+
+
+
+
+
+
+
+
+
+<div id="page">
+
+    <div id="fh5co-main-content">
+      <div class="fh5co-post"> 
+        
+<ui-view></ui-view>
+        
+        <footer>
+          <div>
+        
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+  </div>
+  
+
+
+
+	</div>
+	</div>
+	<script type="">
+ $(document).ready( function() {
+      $('#example').dataTable();
+    } );
+</script>
+<script src="app/app.js"></script>
+<script src="app/routes.js"></script>
+<script src="app/views/registration/regctrl.js"></script>
+<script src="app/views/login/loginctrl.js"></script>
+
+<script src="app/views/manage/manctrl.js"></script>
+<script src="app/controllers/aboutctrl.js"></script>
+<script src="app/controllers/homectrl.js"></script>
+<script src="app/controllers/content.js"></script>
+<script src="app/controllers/profile.js"></script>
+<script src="app/services/postServices.js"></script>
+
+  <!-- Bootstrap -->
+ <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+  <!-- jQuery Easing -->
+ 
+  <script type="text/javascript" src="assests/angular-material/angular-material.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Waypoints -->
+ 
+  <script src="app/js/main.js"></script>
+
+  <script src="app/js/satellizer.min.js"></script>
+  
+  <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+</body>
+</html>
