@@ -1,0 +1,229 @@
+#js for ng-table paginate
+
+(function(){
+
+    "use strict";
+
+    angular
+         .module('StarterApp')
+         .filter('pagination', function(){
+               return function(input, start)
+               {
+                start = +start;
+                return input.slice(start);
+               };
+              })
+         .controller('ProfileCtrl', function($scope, PostBlog, $state, $http){
+
+          $scope.obj = {};
+ $scope.blog = {};
+ $scope.inv = {};
+ //$scope.pageChanged();
+
+PostBlog.displayBlog().then(function(data){
+          console.log(data)
+                    $scope.blog = data.data; // Assign users from database to variable
+                    
+ 
+
+}); 
+
+     $scope.name = {}; 
+     
+
+
+ $scope.curPage = 0;
+ $scope.pageSize = 100;
+     
+  $scope.numberOfPages = function() {
+        return Math.ceil($scope.blog.length / $scope.pageSize);
+      };
+         
+
+
+
+
+
+
+PostBlog.displayInvoice().then(function(data){
+          console.log(data)
+                    $scope.invoice = data.data; // Assign users from database to variable
+                    
+ 
+
+});
+
+
+
+
+
+$scope.delete = function(usr){
+PostBlog.deleteBlog(usr);
+$state.reload();
+};      
+
+
+
+$scope.modify = function(h, p){
+    PostBlog.editBlog(h, p);
+    console.log(h);
+     $scope.p = {};
+      $scope.lol = false;
+    $state.reload();
+};
+
+$scope.edit=function(obj){
+  $scope.p = obj;
+  $scope.p._id = obj._id;
+  console.log($scope.p._id);
+$scope.lol = true;
+};
+
+$scope.pri = function(h){
+
+PostBlog.printBlog(h).then(function(data){
+          
+  $scope.sora = data.data;
+$scope.inv = $scope.sora ;
+});
+$scope.mmm = true;
+//console.log(indexOf(sora));
+};
+
+$scope.cancel = function(){
+  $scope.p = {};
+  $scope.lol = false;
+  $scope.mmm = false;
+
+}
+
+
+$scope.items = [];
+
+
+
+
+   $scope.addProduct = function(){
+    
+      $scope.items.push({
+         fname: $scope.item.fname, 
+         quant: $scope.item.quant,
+         price: $scope.item.price
+       //  tprice: $scope.item.tprice
+      });
+     // console.log($scope.item.tprice);
+      $scope.item = {};
+
+   }
+
+
+$scope.total = {};
+
+$scope.remove = function(index){
+    $scope.items.splice(index, 1);
+  },
+    $scope.sumtotal = function(){
+     $scope.total = 0;
+    angular.forEach($scope.items, function(item){
+      $scope.total += item.quant * item.price;
+    })
+    return $scope.total;
+
+    
+  }
+
+
+
+
+    $scope.submitx = function(inv, item){
+          var objects = [];
+            //$http.post('/api/userss', usr)
+            var invoice = {
+          name:inv.name,
+          payment: inv.payment,
+          check: inv.check,
+          totalprice: inv.totalprice,
+          objects:$scope.items,
+          length: $scope.items.length,
+          price: $scope.total
+      }
+      console.log(invoice.price);
+      console.log(invoice.length)
+                PostBlog.createInvoice(invoice).then(function(data){
+              console.log(data);
+            });
+                $scope.invoice= {};
+
+                $scope.print = true;
+              
+          }
+
+
+
+
+$scope.mommy = function(){
+  $scope.item = {};
+  $scope.items = [];
+ $state.reload();
+}
+
+
+
+
+
+
+
+
+     $scope.printToCart = function(invoice) {
+        var printContents = document.getElementById(invoice).innerHTML;
+  var popupWin = window.open('', '_blank', 'width=300,height=300');
+  popupWin.document.open();
+  popupWin.document.write('<html><head><link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet"><link rel="stylesheet" href="app/css/animate.css"><link rel="stylesheet" href="app/css/icomoon.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css"><link rel="stylesheet" type="text/css" href="http//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"><link rel="stylesheet" href="app/css/style.css"><link rel="stylesheet" type="text/css" href="assests/css/style.css"></head><body onload="window.print()">' + printContents + '</body></html>');
+  popupWin.document.close();
+
+  $scope.print = true;
+      }
+
+
+
+
+$scope.reset=function(){
+  $scope.print = true;
+  $scope.items = [];
+}
+
+
+
+
+
+
+
+
+
+
+ $scope.numRecords = 50;
+    $scope.page = 1;
+$scope.next = function(){
+        $scope.page = $scope.page + 1;
+    };
+
+    $scope.back = function(){
+        $scope.page = $scope.page - 1;
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+
+        
+     })();
